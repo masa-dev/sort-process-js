@@ -17,3 +17,14 @@ button {
     width: 100%;
     margin-bottom: 15px;
 }
+
+@media only screen and (max-width: 700px) {
+    div.content {
+        width: 100%;
+        margin: 5px;
+    }
+    div#button-area {
+        margin: 0 auto;
+        float: none;
+    }
+}

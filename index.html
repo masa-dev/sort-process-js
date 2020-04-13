@@ -25,14 +25,16 @@
 		</div>
 		<div id="code-block">
 			<span class="selected-sort-name">{{ selected }}</span>
-			<table class="code-table">
-				<tbody>
-					<tr v-for="line in list">
-						<td class="data-line-number">{{ line.id }}</td>
-						<td class="code-line" v-bind:id="'line_'+line.id">{{ line.code }}</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="code-wrapper">
+				<table class="code-table">
+					<tbody>
+						<tr v-for="line in list">
+							<td class="data-line-number">{{ line.id }}</td>
+							<td class="code-line" v-bind:id="'line_'+line.id">{{ line.code }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div id="array-elements-bar">
 			<div id="element-0" class="element-bar"></div>
@@ -48,10 +50,13 @@
 			<div id="element-10" class="element-bar"></div>
 		</div>
 		<div id="button-area">
-			<button v-on:click="executeSort()" type="button" id="execute-button" class="btn btn-primary btn-lg">開始</button>
-			<button v-on:click="shuffleArray()" type="button" id="shuffle-button" class="btn btn-success btn-lg">シャッフル</button>
+			<button v-on:click="executeSort()" type="button" id="execute-button"
+				class="btn btn-primary btn-lg">開始</button>
+			<button v-on:click="shuffleArray()" type="button" id="shuffle-button"
+				class="btn btn-success btn-lg">シャッフル</button>
 			<button id="reset-button" class="btn btn-success btn-lg" onclick="location.reload()">リセット</button>
-			<button v-on:click="stopOrRestart()" type="button" id="stop-or-restart-button" class="btn btn-success btn-lg" disabled="true">{{ name }}</button>
+			<button v-on:click="stopOrRestart()" type="button" id="stop-or-restart-button"
+				class="btn btn-success btn-lg" disabled="true">{{ name }}</button>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

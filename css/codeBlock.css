@@ -5,6 +5,11 @@ div#code-block {
     margin-bottom: 15px;
 }
 
+div.code-wrapper {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 table.code-table {
     width: 100%;
 }
@@ -34,15 +39,4 @@ td.code-line {
     padding: 0 10px;
     /* 空白を複数入力できるようにする */
     white-space: pre;
-    overflow: visible;
 }
-
-/*
-#line_3 {
-    background-color: rgba(255, 125, 125, 0.4);
-}
-
-#line_6 {
-    background-color: rgba(255, 125, 125, 0.6);
-}
-*/
