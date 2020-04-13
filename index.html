@@ -9,6 +9,7 @@
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/codeBlock.css">
+	<link rel="stylesheet" href="css/elementBar.css">
 </head>
 
 <body>
@@ -44,10 +45,13 @@
 			<div id="element-7" class="element-bar"></div>
 			<div id="element-8" class="element-bar"></div>
 			<div id="element-9" class="element-bar"></div>
+			<div id="element-10" class="element-bar"></div>
 		</div>
 		<div id="button-area">
-			<button v-on:click="shuffleArray()" type="button" id="shuffle-button" class="btn btn-success btn-lg">シャッフル</button>
 			<button v-on:click="executeSort()" type="button" id="execute-button" class="btn btn-primary btn-lg">開始</button>
+			<button v-on:click="shuffleArray()" type="button" id="shuffle-button" class="btn btn-success btn-lg">シャッフル</button>
+			<button id="reset-button" class="btn btn-success btn-lg" onclick="location.reload()">リセット</button>
+			<button v-on:click="stopOrRestart()" type="button" id="stop-or-restart-button" class="btn btn-success btn-lg" disabled="true">{{ name }}</button>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -65,6 +69,7 @@
 	<script src="js/sortCode.js"></script>
 	<script src="js/sort.js"></script>
 	<script src="js/vueInstance.js"></script>
+	<script src="js/codePaint.js"></script>
 	<script src="js/elementBar.js"></script>
 	<script src="js/main.js"></script>
 </body>

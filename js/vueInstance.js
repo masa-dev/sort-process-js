@@ -35,6 +35,12 @@ let codeContent = new Vue({
 
 let button = new Vue({
     el: '#button-area',
+    data: {
+        i: 0,
+        time: 500,
+        statement: 'stop',
+        name: '中断'
+    },
     methods: {
         shuffleArray: function () {
             shuffle(array);
@@ -42,16 +48,20 @@ let button = new Vue({
             console.log(array);
         },
         executeSort: function () {
-            let i = 0;
+            let i = 0; // 0から始まる
+            time = button.time;
+            this.statement = 'processing'
 
             // ボタンを無効にする
             $('#shuffle-button').attr('disabled', true);
             $('#execute-button').attr('disabled', true);
+            $('#select-sort').attr('disabled', true);
+            // ボタンを有効にする
+            $('#stop-or-restart-button').attr('disabled', false);
 
             // sortLog を初期化
             sortLog.splice(0, sortLog.length);
 
-            console.log(array)
             switch (sortType.selected) {
                 case 0:
                     selectionSort(array, sortLog);
@@ -63,27 +73,75 @@ let button = new Vue({
                     break;
             }
 
+            //ソートアニメーション開始
             sortAnimation = setInterval(function () {
                 if (sortLog[i].type == 'compare') {
-                    changeWhenComparison(sortLog[i].x, sortLog[i].y, 500);
+                    changeWhenComparison(sortLog[i].x, sortLog[i].y, time);
+                    paintLine(sortLog[i].line, 'rgba(255, 206, 86, 0.4)', time);
                 }
                 else if (sortLog[i].type == 'exchange') {
-                    exchangePlace(sortLog[i].x, sortLog[i].y, 500);
+                    exchangePlace(sortLog[i].x, sortLog[i].y, time);
+                    paintLine(sortLog[i].line, 'rgba(255, 99, 132, 0.4)', time)
                 }
                 else {
                     alert('error');
                 }
 
+                //ソートアニメーション終了
                 if (i == sortLog.length - 1) {
-                    //ボタンを有効にする
+                    button.statement = 'stop'
+                    button.i = 0;
+                    // 入力フォーム、ボタンを有効にする
                     $('#shuffle-button').attr('disabled', false);
                     $('#execute-button').attr('disabled', false);
+                    $('#select-sort').attr('disabled', false);
+                    // ボタンを無効にする
+                    $('#stop-or-restart-button').attr('disabled', true);
                     clearInterval(sortAnimation);
+                } else {
+                    i++;
+                    button.i++;
                 }
-                i++;
-            }, 500);
+            }, time);
+        },
+        stopOrRestart: function () {
+            time = button.time;
+            if (this.statement == 'processing') {
+                this.statement = 'pause';
+                this.name = '再開';
+                clearInterval(sortAnimation);
+            }
+            else if (this.statement == 'pause') {
+                this.statement = 'processing';
+                this.name = '中断';
+                let i = this.i;
+                sortAnimation = setInterval(function () {
+                    if (sortLog[i].type == 'compare') {
+                        changeWhenComparison(sortLog[i].x, sortLog[i].y, time);
+                    }
+                    else if (sortLog[i].type == 'exchange') {
+                        exchangePlace(sortLog[i].x, sortLog[i].y, time);
+                    }
+                    else {
+                        alert('error');
+                    }
 
-            console.log(array, sortLog);
-        }
+                    if (i == sortLog.length - 1) {
+                        button.statement = 'stop'
+                        // 入力フォーム、ボタンを有効にする
+                        $('#select-sort').attr('disabled', false);
+                        $('#shuffle-button').attr('disabled', false);
+                        $('#execute-button').attr('disabled', false);
+                        // ボタンを無効にする
+                        $('#stop-or-restart-button').attr('disabled', true);
+                        button.i = 0;
+                        clearInterval(sortAnimation);
+                    } else {
+                        i++;
+                        button.i++;
+                    }
+                }, time);
+            }
+        },
     }
 })

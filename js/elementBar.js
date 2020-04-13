@@ -1,4 +1,4 @@
-let place = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270];
+let place = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300];
 
 for (let i = 0; i < place.length; i++) {
     place[i] -= 1;  //位置の修正
@@ -21,13 +21,13 @@ function adjustPosition(array) {
             left: '',
             top: ''
         })
-        
+
         $('#element-' + i).css({
             height: (30 * array[i]) + 'px',
             left: (30 * i - 1) + 'px',
             top: '+=1'
         })
-        
+
     }
 }
 
@@ -62,5 +62,4 @@ function exchangePlace(num_1, num_2, time) {
     $('#element-' + num_1).attr('id', 'element-temp');
     $('#element-' + num_2).attr('id', 'element-' + num_1);
     $('#element-temp').attr('id', 'element-' + num_2);
-
 }

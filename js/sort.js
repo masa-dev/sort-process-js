@@ -12,7 +12,7 @@ function selectionSort(array, log) {
         maxIndex = 0;
         for (let j = 1; j <= i; j++) {
             //比較  
-            log.push({ x: j, y: maxIndex, type: 'compare' });
+            log.push({ x: j, y: maxIndex, type: 'compare', line: 7 });
             //              
             if (array[j] >= max) {
                 max = array[j];
@@ -20,7 +20,7 @@ function selectionSort(array, log) {
             }
         }
         //入れ替え
-        log.push({ x: i, y: maxIndex, type: 'exchange' });
+        log.push({ x: i, y: maxIndex, type: 'exchange', line: 12 });
         //        
         [array[maxIndex], array[i]] = [array[i], array[maxIndex]];
     }
@@ -31,21 +31,26 @@ function insertSort(array, log) {
     for (let i = 1; i < array.length; i++) {
         x = array[i];
         j = i;
+        //入れ替え
+        log.push({ x: i, y: 10, type: 'exchange', line: 4 });
+        //        
         while (true) {
-            //比較  
-            log.push({ x: i, y: j - 1, type: 'compare' });
+            //比較
+            log.push({ x: 10, y: j - 1, type: 'compare', line: 6 });
             //              
             if ((array[j - 1] > x) && (j > 0)) {
                 //入れ替え
-                log.push({ x: j, y: j - 1, type: 'exchange' });
+                log.push({ x: j, y: j - 1, type: 'exchange', line: 7 });
                 //        
-
                 array[j] = array[j - 1];
                 j--;
             } else {
                 break;
             }
         }
+        //入れ替え
+        log.push({ x: j, y: 10, type: 'exchange', line: 10 });
+        //        
         array[j] = x;
     }
 }
