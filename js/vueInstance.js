@@ -45,7 +45,6 @@ let button = new Vue({
         shuffleArray: function () {
             shuffle(array);
             adjustPosition(array);
-            console.log(array);
         },
         executeSort: function () {
             let i = 0; // 0から始まる
@@ -118,9 +117,11 @@ let button = new Vue({
                 sortAnimation = setInterval(function () {
                     if (sortLog[i].type == 'compare') {
                         changeWhenComparison(sortLog[i].x, sortLog[i].y, time);
+                        paintLine(sortLog[i].line, 'rgba(255, 206, 86, 0.4)', time);
                     }
                     else if (sortLog[i].type == 'exchange') {
                         exchangePlace(sortLog[i].x, sortLog[i].y, time);
+                        paintLine(sortLog[i].line, 'rgba(255, 99, 132, 0.4)', time)
                     }
                     else {
                         alert('error');
@@ -143,5 +144,16 @@ let button = new Vue({
                 }, time);
             }
         },
+        changeSortSpeed: function (speed) {
+            $('#now-speed').html(Math.round(1 / (speed / 1000) * 10) / 10 + ' process / s')
+            if (this.statement == 'stop' || this.statement == 'pause') {
+                this.time = speed;
+            }
+            else if (this.statement == 'processing') {
+                this.time = speed;
+                this.stopOrRestart();
+                this.stopOrRestart();
+            }
+        }
     }
 })

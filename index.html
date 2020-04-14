@@ -49,14 +49,21 @@
 			<div id="element-9" class="element-bar"></div>
 			<div id="element-10" class="element-bar"></div>
 		</div>
-		<div id="button-area">
-			<button v-on:click="executeSort()" type="button" id="execute-button"
-				class="btn btn-primary btn-lg">開始</button>
-			<button v-on:click="shuffleArray()" type="button" id="shuffle-button"
-				class="btn btn-success btn-lg">シャッフル</button>
-			<button id="reset-button" class="btn btn-success btn-lg" onclick="location.reload()">リセット</button>
-			<button v-on:click="stopOrRestart()" type="button" id="stop-or-restart-button"
-				class="btn btn-success btn-lg" disabled="true">{{ name }}</button>
+		<div id="control-area">
+			<div id="speed-control-area" class="form-group">
+				<label for="speed-control-range">ソート速度：<span id="now-speed">4 process / s</span></label>
+				<input oninput="button.changeSortSpeed(this.value);" type="range" id="speed-control-range"
+					class="custom-range" min="0" max="500" step="50" value="250">
+			</div>
+			<div id="button-area">
+				<button v-on:click="executeSort()" type="button" id="execute-button"
+					class="btn btn-primary btn-lg">開始</button>
+				<button v-on:click="shuffleArray()" type="button" id="shuffle-button"
+					class="btn btn-success btn-lg">シャッフル</button>
+				<button id="reset-button" class="btn btn-success btn-lg" onclick="location.reload()">リセット</button>
+				<button v-on:click="stopOrRestart()" type="button" id="stop-or-restart-button"
+					class="btn btn-success btn-lg" disabled="true">{{ name }}</button>
+			</div>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
