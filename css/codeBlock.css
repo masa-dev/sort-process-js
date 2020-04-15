@@ -34,7 +34,7 @@ td.data-line-number {
 }
 
 td.code-line {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     font-size: 13px;
     padding: 0 10px;
     /* 空白を複数入力できるようにする */
@@ -49,6 +49,6 @@ span.roop-or-branch-word {
     color: rgb(200, 70, 200);
 }
 
-span.number-word{
+span.number-word {
     color: rgb(53, 185, 5)
 }
