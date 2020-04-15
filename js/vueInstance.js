@@ -150,7 +150,7 @@ let button = new Vue({
                     else if (sortLog[i].type == 'recursion') {
                         recursionPlace(sortLog[i].x, sortLog[i].y, time);
                         paintLine(sortLog[i].line, 'rgba(153, 102, 255, 0.4)', time)
-                    }    
+                    }
                     else {
                         alert('stop : error');
                     }

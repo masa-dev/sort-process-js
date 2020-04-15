@@ -111,8 +111,8 @@ setint = setInterval(() => {
 
 ///////////////////////////////////////////////////
 
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
     code = codeContent.list[i].code.replace(/(function|let)/g, '<span style="color:rgba(54, 162, 235, 1)";>$&</span>');
 
-    $('#line_' + (i+1)).html(code);    
+    $('#line_' + (i + 1)).html(code);
 }

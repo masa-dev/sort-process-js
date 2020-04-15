@@ -11,5 +11,5 @@ adjustPosition(array);
 codeContent.initCode(selectionSortCode);
 
 // element-10 の border の色を消す
-$('#element-10').css({'border':'1px'});
+$('#element-10').css({ 'border': '1px' });
 

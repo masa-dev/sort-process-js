@@ -14,6 +14,11 @@ table.code-table {
     width: 100%;
 }
 
+table tr:nth-child(odd) {
+    /*偶数列のみ少し濃くする*/
+    background-color: rgba(241, 244, 255, 0.8);
+}
+
 span.selected-sort-name {
     display: inline-block;
     width: 100%;
@@ -23,9 +28,10 @@ span.selected-sort-name {
 }
 
 td.data-line-number {
-    width: 50px;
+    width: 35px;
     font-size: 13px;
     color: gray;
+    background-color: white;
     user-select: none;
     text-align: right;
     padding: 0 10px;
@@ -50,5 +56,5 @@ span.roop-or-branch-word {
 }
 
 span.number-word {
-    color: rgb(53, 185, 5)
+    color: rgb(5, 185, 86)
 }

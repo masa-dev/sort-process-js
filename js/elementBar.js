@@ -39,7 +39,7 @@ function changeWhenComparison(num_1, num_2, time) {
         //0.45 秒後に色を戻す
         setTimeout(function () {
             changeBarColor('#element-' + num, 'rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)');
-        }, time - time/10);
+        }, time - time / 10);
     }
 }
 
@@ -51,12 +51,12 @@ function exchangePlace(num_1, num_2, time) {
         //0.45 秒後に要素の色を元に戻す
         setTimeout(function () {
             changeBarColor('#element-' + num, 'rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)');
-        }, time - time/10);
+        }, time - time / 10);
     }
 
     //要素の異動
-    $('#element-' + num_1).animate({ 'left': place[num_2] + 'px' }, time - time/10);
-    $('#element-' + num_2).animate({ 'left': place[num_1] + 'px' }, time - time/10);
+    $('#element-' + num_1).animate({ 'left': place[num_2] + 'px' }, time - time / 10);
+    $('#element-' + num_2).animate({ 'left': place[num_1] + 'px' }, time - time / 10);
 
     //要素の id の入れ替え
     $('#element-' + num_1).attr('id', 'element-temp');
@@ -67,25 +67,25 @@ function exchangePlace(num_1, num_2, time) {
 function recursionPlace(num_1, num_2, time) {
     //その範囲の色を変更
     let a, b, barArray = [];
-    
+
     [a, b] = AisSmallerThanB(num_1, num_2);
 
-    for(i = 0; i <= b-a; i++) {
-        barArray.push(i+a);
+    for (i = 0; i <= b - a; i++) {
+        barArray.push(i + a);
     }
 
-    for(let num of barArray) {
+    for (let num of barArray) {
         changeBarColor('#element-' + num, 'rgba(153, 102, 255, 0.2)', 'rgba(153, 102, 255, 1)');
         //0.45 秒後に要素の色を元に戻す
         setTimeout(function () {
             changeBarColor('#element-' + num, 'rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)');
-        }, time - time/10);
+        }, time - time / 10);
     }
 }
 
 //2変数を( A < B )の関係にする関数
 function AisSmallerThanB(a, b) {
-    if(a < b) {
+    if (a < b) {
         return [a, b];
     }
     else {
