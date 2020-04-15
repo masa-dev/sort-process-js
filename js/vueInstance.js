@@ -39,7 +39,7 @@ let codeContent = new Vue({
 
             for (let i = 0; i < this.list.length; i++) {
                 code[i] = code[i].replace(/(function|let|var|const)/g, '<span class="define-word">$&</span>');
-                code[i] = code[i].replace(/(for|while|if)/g, '<span class="roop-or-branch-word">$&</span>');
+                code[i] = code[i].replace(/(for|while|if|break)/g, '<span class="roop-or-branch-word">$&</span>');
                 code[i] = code[i].replace(/[0-9]/g, '<span class="number-word">$&</span>');
 
                 this.list[i].code = code[i];
