@@ -15,7 +15,7 @@ table.code-table {
 }
 
 table tr:nth-child(odd) {
-    /*偶数列のみ少し濃くする*/
+    /*基数列のみ少し濃くする -- 偶数は even*/
     background-color: rgba(241, 244, 255, 0.8);
 }
 
