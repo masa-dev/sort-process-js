@@ -83,6 +83,9 @@ function quickSort(array, start, end, log) {
                 break;
             }
         }
+        //比較
+        log.push({ x: right, y: left, type: 'compare', line: 13 });
+        //        
         if (right <= left) {
             break;
         }
@@ -93,12 +96,18 @@ function quickSort(array, start, end, log) {
         right--;
     }
 
+    //比較
+    log.push({ x: start, y: left -1, type: 'compare', line: 20 });
+    //    
     if (start < left - 1) {
         //再帰
         log.push({ x: start, y: left - 1, type: 'recursion', line: 21 })
         //
         quickSort(array, start, left - 1, log);
     }
+    //比較
+    log.push({ x: right + 1, y: end, type: 'compare', line: 23 });
+    //    
     if (right + 1 < end) {
         //再帰
         log.push({ x: right + 1, y: end, type: 'recursion', line: 24 })
