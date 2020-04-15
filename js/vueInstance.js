@@ -53,7 +53,7 @@ let button = new Vue({
     el: '#button-area',
     data: {
         i: 0,
-        time: 500,
+        time: 250,
         statement: 'stop',
         name: '中断'
     },
