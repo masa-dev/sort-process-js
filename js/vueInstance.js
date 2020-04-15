@@ -30,13 +30,13 @@ let codeContent = new Vue({
             this.deleteCode();
             this.initCode(sortType.options[sortType.selected].code);
             this.selected = sortType.options[sortType.selected].name;
-        },addCodeHighlight: function () {
+        }, addCodeHighlight: function () {
             let code = [];
-            for(let line of this.list) {
+            for (let line of this.list) {
                 code.push(line.code);
             }
-            
-            for(let i = 0; i < this.list.length; i++) {
+
+            for (let i = 0; i < this.list.length; i++) {
                 code[i] = code[i].replace(/(function|let|var|const)/g, '<span class="define-word">$&</span>');
                 code[i] = code[i].replace(/(for|while|if)/g, '<span class="roop-or-branch-word">$&</span>');
                 code[i] = code[i].replace(/[0-9]/g, '<span class="number-word">$&</span>');
@@ -160,6 +160,7 @@ let button = new Vue({
             }
         },
         changeSortSpeed: function (speed) {
+            speed = 500 - speed;
             $('#now-speed').html(Math.round(1 / (speed / 1000) * 10) / 10 + ' process / s')
             if (this.statement == 'stop' || this.statement == 'pause') {
                 this.time = speed;
