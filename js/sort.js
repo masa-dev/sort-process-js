@@ -48,9 +48,62 @@ function insertSort(array, log) {
                 break;
             }
         }
+        console.log(log);
         //入れ替え
         log.push({ x: j, y: 10, type: 'exchange', line: 10 });
         //        
         array[j] = x;
     }
 }
+
+function quickSort(array, start, end, log) {
+    let pivot = array[Math.floor((start + end) / 2)];
+    let pivot_position = Math.floor((start + end) / 2);
+    let left = start;
+    let right = end;
+
+    while (true) {
+        while (true) {
+            //比較
+            log.push({ x: left, y: pivot_position, type: 'compare', line: 7 });
+            //
+            if (array[left] < pivot) {
+                left++;
+            } else {
+                break;
+            }
+        }
+        while (true) {
+            //比較
+            log.push({ x: pivot_position, y: right, type: 'compare', line: 10 });
+            //
+            if (pivot < array[right]) {
+                right--;
+            } else {
+                break;
+            }
+        }
+        if (right <= left) {
+            break;
+        }
+        //入れ替え
+        log.push({ x: left, y: right, type: 'exchange', line: 16 });
+        //
+        [array[left], array[right]] = [array[right], array[left]];
+        right--;
+    }
+
+    if (start < left - 1) {
+        //再帰
+        log.push({ x: start, y: left - 1, type: 'recursion', line: 21 })
+        //
+        quickSort(array, start, left - 1, log);
+    }
+    if (right + 1 < end) {
+        //再帰
+        log.push({ x: right + 1, y: end, type: 'recursion', line: 24 })
+        //
+        quickSort(array, right + 1, end, log);
+    }
+}
+

@@ -63,3 +63,32 @@ function exchangePlace(num_1, num_2, time) {
     $('#element-' + num_2).attr('id', 'element-' + num_1);
     $('#element-temp').attr('id', 'element-' + num_2);
 }
+
+function recursionPlace(num_1, num_2, time) {
+    //その範囲の色を変更
+    let a, b, barArray = [];
+    
+    [a, b] = AisSmallerThanB(num_1, num_2);
+
+    for(i = 0; i <= b-a; i++) {
+        barArray.push(i+a);
+    }
+
+    for(let num of barArray) {
+        changeBarColor('#element-' + num, 'rgba(153, 102, 255, 0.2)', 'rgba(153, 102, 255, 1)');
+        //0.45 秒後に要素の色を元に戻す
+        setTimeout(function () {
+            changeBarColor('#element-' + num, 'rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)');
+        }, time - time/10);
+    }
+}
+
+//2変数を( A < B )の関係にする関数
+function AisSmallerThanB(a, b) {
+    if(a < b) {
+        return [a, b];
+    }
+    else {
+        return [b, a];
+    }
+}

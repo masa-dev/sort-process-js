@@ -17,6 +17,7 @@
 | --- | --- | --- |
 | 選択ソート | n^2 | n^2 |
 | 挿入ソート | n+d | n^2 |
+| クイックソート | n log n | n^2 |
 
 ※ k : 桁数<br>
 参考 : [Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%BC%E3%83%88)

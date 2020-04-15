@@ -4,7 +4,8 @@ let sortType = new Vue({
         selected: 0,
         options: [
             { id: 0, name: '選択ソート', code: selectionSortCode },
-            { id: 1, name: '挿入ソート', code: insertSortCode }
+            { id: 1, name: '挿入ソート', code: insertSortCode },
+            { id: 2, name: 'クイックソート', code: quickSortCode }
         ]
     }
 })
@@ -83,6 +84,9 @@ let button = new Vue({
                 case 1:
                     insertSort(array, sortLog);
                     break;
+                case 2:
+                    quickSort(array, 0, array.length - 1, sortLog);
+                    break;
                 default:
                     break;
             }
@@ -97,8 +101,13 @@ let button = new Vue({
                     exchangePlace(sortLog[i].x, sortLog[i].y, time);
                     paintLine(sortLog[i].line, 'rgba(255, 99, 132, 0.4)', time)
                 }
+                else if (sortLog[i].type == 'recursion') {
+                    recursionPlace(sortLog[i].x, sortLog[i].y, time);
+                    paintLine(sortLog[i].line, 'rgba(153, 102, 255, 0.4)', time)
+                }
                 else {
-                    alert('error');
+                    console.log(sortLog[i]);
+                    alert('sortLog : error \n' + sortLog[i].type);
                 }
 
                 //ソートアニメーション終了
@@ -138,8 +147,12 @@ let button = new Vue({
                         exchangePlace(sortLog[i].x, sortLog[i].y, time);
                         paintLine(sortLog[i].line, 'rgba(255, 99, 132, 0.4)', time)
                     }
+                    else if (sortLog[i].type == 'recursion') {
+                        recursionPlace(sortLog[i].x, sortLog[i].y, time);
+                        paintLine(sortLog[i].line, 'rgba(153, 102, 255, 0.4)', time)
+                    }    
                     else {
-                        alert('error');
+                        alert('stop : error');
                     }
 
                     if (i == sortLog.length - 1) {
