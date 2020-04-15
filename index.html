@@ -28,9 +28,9 @@
 			<div class="code-wrapper">
 				<table class="code-table">
 					<tbody>
-						<tr v-for="line in list">
+						<tr v-for="line in list" v-bind:id="'tr_'+line.id">
 							<td class="data-line-number">{{ line.id }}</td>
-							<td class="code-line" v-bind:id="'line_'+line.id">{{ line.code }}</td>
+							<td class="code-line" v-bind:id="'line_'+line.id" v-html="line.code"></td>
 						</tr>
 					</tbody>
 				</table>

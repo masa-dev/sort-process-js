@@ -40,3 +40,15 @@ td.code-line {
     /* 空白を複数入力できるようにする */
     white-space: pre;
 }
+
+span.define-word {
+    color: rgb(0, 100, 214);
+}
+
+span.roop-or-branch-word {
+    color: rgb(200, 70, 200);
+}
+
+span.number-word{
+    color: rgb(53, 185, 5)
+}

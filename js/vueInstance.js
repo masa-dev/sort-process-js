@@ -21,6 +21,7 @@ let codeContent = new Vue({
             for (let i = 0; i < codePerLine.length; i++) {
                 this.list.push({ id: i + 1, code: codePerLine[i] });
             }
+            this.addCodeHighlight();
         },
         deleteCode: function () {
             this.list.splice(0, this.list.length);
@@ -29,7 +30,21 @@ let codeContent = new Vue({
             this.deleteCode();
             this.initCode(sortType.options[sortType.selected].code);
             this.selected = sortType.options[sortType.selected].name;
+        },addCodeHighlight: function () {
+            let code = [];
+            for(let line of this.list) {
+                code.push(line.code);
+            }
+            
+            for(let i = 0; i < this.list.length; i++) {
+                code[i] = code[i].replace(/(function|let|var|const)/g, '<span class="define-word">$&</span>');
+                code[i] = code[i].replace(/(for|while|if)/g, '<span class="roop-or-branch-word">$&</span>');
+                code[i] = code[i].replace(/[0-9]/g, '<span class="number-word">$&</span>');
+
+                this.list[i].code = code[i];
+            }
         }
+
     }
 })
 
