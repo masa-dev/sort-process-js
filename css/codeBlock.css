@@ -47,14 +47,22 @@ td.code-line {
     white-space: pre;
 }
 
-span.define-word {
+span.dw { /*declaration-word*/
     color: rgb(0, 100, 214);
 }
 
-span.roop-or-branch-word {
+span.robw {  /*roop-or-branch-word*/
     color: rgb(200, 70, 200);
 }
 
-span.number-word {
-    color: rgb(5, 185, 86)
+span.nw {  /*number-word*/
+    color: rgb(5, 185, 86);
+}
+
+span.fw {    /*function-word*/
+    color: rgb(111, 158, 0);
+}
+
+span.bw {   /*boot-word*/
+    color: rgb(0, 153, 255);
 }
