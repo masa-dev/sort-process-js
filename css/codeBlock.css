@@ -11,6 +11,8 @@ div.code-wrapper {
 }
 
 table.code-table {
+    border-spacing: 0;
+    border-collapse: collapse;
     width: 100%;
 }
 
@@ -47,22 +49,27 @@ td.code-line {
     white-space: pre;
 }
 
-span.dw { /*declaration-word*/
+span.dw {
+    /*declaration-word*/
     color: rgb(0, 100, 214);
 }
 
-span.robw {  /*roop-or-branch-word*/
+span.robw {
+    /*roop-or-branch-word*/
     color: rgb(200, 70, 200);
 }
 
-span.nw {  /*number-word*/
-    color: rgb(5, 185, 86);
+span.nw {
+    /*number-word*/
+    color: rgb(37, 175, 95);
 }
 
-span.fw {    /*function-word*/
-    color: rgb(133, 158, 24);
+span.fw {
+    /*function-word*/
+    color: rgb(163, 2, 2);
 }
 
-span.bw {   /*boot-word*/
+span.bw {
+    /*boot-word*/
     color: rgb(0, 153, 255);
 }

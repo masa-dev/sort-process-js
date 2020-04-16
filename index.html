@@ -60,7 +60,7 @@
 					class="btn btn-primary btn-lg">開始</button>
 				<button v-on:click="shuffleArray()" type="button" id="shuffle-button"
 					class="btn btn-success btn-lg">シャッフル</button>
-				<button id="reset-button" class="btn btn-success btn-lg" onclick="location.reload()">リセット</button>
+				<button id="reset-button" class="btn btn-success btn-lg" v-on:click="resetThisPage()">リセット</button>
 				<button v-on:click="stopOrRestart()" type="button" id="stop-or-restart-button"
 					class="btn btn-success btn-lg" disabled="true">{{ name }}</button>
 			</div>

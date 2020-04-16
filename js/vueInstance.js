@@ -5,7 +5,10 @@ let sortType = new Vue({
         options: [
             { id: 0, name: '選択ソート', code: selectionSortCode },
             { id: 1, name: '挿入ソート', code: insertSortCode },
-            { id: 2, name: 'クイックソート', code: quickSortCode }
+            { id: 2, name: 'クイックソート', code: quickSortCode },
+            { id: 3, name: 'バブルソート', code: bubbleSortCode },
+            { id: 4, name: 'シェーカーソート', code: shakerSortCode },
+            { id: 5, name: 'ボゴソート（非推奨）', code: bogoSortCode }
         ]
     }
 })
@@ -41,15 +44,14 @@ let codeContent = new Vue({
             for (let i = 0; i < this.list.length; i++) {
                 //ドットと空白と'[]'を含まず、'('で終わる文字列
                 code[i] = code[i].replace(/([^!\.\s()\[\]]+)(\()/g, '<span class="fw">$1</span>$2');
-                code[i] = code[i].replace(/(function|let|var|const)/g, '<span class="dw">$&</span>');
-                code[i] = code[i].replace(/(for|while|if|break)/g, '<span class="robw">$&</span>');
+                code[i] = code[i].replace(/(function|let|var|const)(\s)/g, '<span class="dw">$1</span>$2');
+                code[i] = code[i].replace(/(for|while|if|break|return|else)(\(|\s|;|\{)/g, '<span class="robw">$1</span>$2');
                 code[i] = code[i].replace(/(true|false)/g, '<span class="bw">$&</span>');
                 code[i] = code[i].replace(/[0-9]/g, '<span class="nw">$&</span>');
 
                 this.list[i].code = code[i];
             }
         }
-
     }
 })
 
@@ -91,6 +93,24 @@ let button = new Vue({
                 case 2:
                     quickSort(array, 0, array.length - 1, sortLog);
                     break;
+                case 3:
+                    bubbleSort(array, sortLog);
+                    break;
+                case 4:
+                    shakerSort(array, sortLog);
+                    break;
+                case 5:
+                    let result = confirm('ボゴソートを本当に実行しますか？\n※落ちるため、処理が100万回に達した時点で止まります\n※最悪計算時間：∞\n※推奨ソート速度：infinity process');
+                    if (result) {
+                        bogoSort(array, sortLog);
+                        if (sortLog.length > 1000000) {
+                            alert('処理が100万回を越えたため停止しました')
+                        }
+                    }
+                    else {
+                        sortLog.push({ type: 'reject' });
+                    }
+                    break;
                 default:
                     break;
             }
@@ -108,6 +128,9 @@ let button = new Vue({
                 else if (sortLog[i].type == 'recursion') {
                     recursionPlace(sortLog[i].x, sortLog[i].y, time);
                     paintLine(sortLog[i].line, 'rgba(153, 102, 255, 0.4)', time)
+                }
+                else if ('reject') {
+                    //何もしない
                 }
                 else {
                     console.log(sortLog[i]);
@@ -187,6 +210,12 @@ let button = new Vue({
                 this.stopOrRestart();
                 this.stopOrRestart();
             }
+        },
+        resetThisPage: function () {
+            if (typeof sortAnimation === undefined) {
+                clearInterval(sortAnimation);
+            }
+            location.reload()
         }
     }
 })

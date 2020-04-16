@@ -55,3 +55,60 @@ let quickSortCode =
         quickSort(array, right + 1, end);
     }
 }`;
+
+let bubbleSortCode =
+    `function bubbleSort(array) {
+    let arrayLength = array.length;
+    for (let i = 0; i < arrayLength - 1; i++) {
+        for (let j = arrayLength; j >= i + 1; j--) {
+            if (array[j] < array[j - 1]) {
+                [array[j], array[j - 1]] = [array[j - 1], array[j]];
+            }
+        }
+    }
+}`;
+
+let shakerSortCode =
+    `function shakerSort(array) {
+    let start = 0;
+    let end = array.length - 1;
+
+    while (true) {
+        for (let i = start; i < end; i++) {
+            if (array[i] > array[i + 1]) {
+                [array[i], array[i + 1]] = [array[i + 1], array[i]];
+            }
+        }
+        end--;
+        if (start === end) break;
+        for (let i = end; i > start; i--) {
+            if (array[i - 1] > array[i]) {
+                [array[i - 1], array[i]] = [array[i], array[i - 1]];
+            }
+        }
+        start++;
+        if (start === end) break;
+    }
+}`
+
+let bogoSortCode =
+    `function bogoSort(array) {
+    while (true) {
+        for (let i = array.length - 1; i >= 0; i--) {
+            let rand = Math.floor(Math.random() * (i + 1));
+            [array[i], array[rand]] = [array[rand], array[i]];
+        }
+        if (sortCheck(array)) {
+            break;
+        }
+    }
+}
+
+function sortCheck(array) {
+    for (let i = 1; i < array.length - 1; i++) {
+        if (array[i - 1] > array[i]) {
+            return false;
+        }
+    }
+    return true;
+}`

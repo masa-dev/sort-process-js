@@ -83,6 +83,7 @@ function recursionPlace(num_1, num_2, time) {
     }
 }
 
+
 //2変数を( A < B )の関係にする関数
 function AisSmallerThanB(a, b) {
     if (a < b) {
