@@ -31,16 +31,20 @@ let codeContent = new Vue({
             this.deleteCode();
             this.initCode(sortType.options[sortType.selected].code);
             this.selected = sortType.options[sortType.selected].name;
-        }, addCodeHighlight: function () {
+        },
+        addCodeHighlight: function () {
             let code = [];
             for (let line of this.list) {
                 code.push(line.code);
             }
 
             for (let i = 0; i < this.list.length; i++) {
-                code[i] = code[i].replace(/(function|let|var|const)/g, '<span class="define-word">$&</span>');
-                code[i] = code[i].replace(/(for|while|if|break)/g, '<span class="roop-or-branch-word">$&</span>');
-                code[i] = code[i].replace(/[0-9]/g, '<span class="number-word">$&</span>');
+                //ドットと空白と'[]'を含まず、'('で終わる文字列
+                code[i] = code[i].replace(/([^!\.\s()\[\]]+)(\()/g, '<span class="fw">$1</span>$2');
+                code[i] = code[i].replace(/(function|let|var|const)/g, '<span class="dw">$&</span>');
+                code[i] = code[i].replace(/(for|while|if|break)/g, '<span class="robw">$&</span>');
+                code[i] = code[i].replace(/(true|false)/g, '<span class="bw">$&</span>');
+                code[i] = code[i].replace(/[0-9]/g, '<span class="nw">$&</span>');
 
                 this.list[i].code = code[i];
             }
