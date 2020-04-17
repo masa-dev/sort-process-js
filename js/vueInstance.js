@@ -43,7 +43,7 @@ let codeContent = new Vue({
 
             for (let i = 0; i < this.list.length; i++) {
                 //ドットと空白と'[]'を含まず、'('で終わる文字列
-                code[i] = code[i].replace(/([^!\.\s()\[\]]+)(\()/g, '<span class="fw">$1</span>$2');
+                code[i] = code[i].replace(/([^!\.\s\(\)\[\]]+)(\()/g, '<span class="fw">$1</span>$2');
                 code[i] = code[i].replace(/(function|let|var|const)(\s)/g, '<span class="dw">$1</span>$2');
                 code[i] = code[i].replace(/(for|while|if|break|return|else)(\(|\s|;|\{)/g, '<span class="robw">$1</span>$2');
                 code[i] = code[i].replace(/(true|false)/g, '<span class="bw">$&</span>');
