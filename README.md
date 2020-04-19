@@ -28,19 +28,15 @@
 ## 使ったライブラリなど
 
 - vue.js
-- jQuery
-- bootstrap
-
-    ### vue.js
 
     コードの表示をリアクティブに表示するために使用しています。
 
-    ### jQuery
+- jQuery
 
     DOM操作をするために使用しています。<br>
     主に色の変更や要素の移動など。
 
-    ### bootstrap
+- bootstrap
 
     ボタンやフォームなどのスタイルに使用しています。
 
