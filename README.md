@@ -23,7 +23,7 @@
 | ボゴソート | n*n! | ∞ |
 
 ※ k : 桁数<br>
-参考 : [Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%BC%E3%83%88)
+参考 : [Wikipedia-ソート](https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%BC%E3%83%88)
 
 ## 使ったライブラリなど
 
